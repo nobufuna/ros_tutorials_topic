@@ -13,6 +13,18 @@ int main(int argc, char **argv)
         ros_tutorials_topic::MsgTutorial msg;
         int count = 0;
 
-        while (ros;;ok())
+        while (ros::ok())
         {
-                msg.stamp = 
+                msg.stamp = ros::Time::now();
+                msg.data  = cout;
+                
+                ROS_INFO("send msg = %d", msg.stamp.sec);
+                ROS_INFO("send msg = %d", msg.stamp.nsec); 
+                ROS_INFO("send msg = %d", msg.data);
+
+                ros_tutorial_pub.publish(msg);
+                loop_rate.sleep();
+                ++count;
+        }
+        return 0;
+}
